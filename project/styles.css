@@ -1,0 +1,42 @@
+@media screen and (max-width: 700px) {
+
+    table thead {
+        display: none
+    }
+
+    table td,
+    table tr {
+        display: block
+    }
+
+    table td {
+        border: 1px solid #000000;
+        text-align: right;
+        /*border-bottom: 0px*/
+    }
+
+    table td:last-child {
+        border: 1px solid #000000
+    }
+
+    table tr {
+        margin-bottom: 1em;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    
+    .utils button {
+        display: block;
+        margin: auto;
+        float: center
+    }
+}
