@@ -1,5 +1,6 @@
 "use strict"
 let jsonData
+let district
 
 fetch("facility-fw.json")
   .then((response) => response.json())
@@ -8,6 +9,12 @@ fetch("facility-fw.json")
   })
   .then(() => console.log(jsonData[0]))
   .then(() => generateTable(jsonData))
+  .then(() => district = jsonData.map(x => x['District_en']))
+  .then(district => district.reduce(
+    (a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null))
+  )
+  .then(obj => Object.keys(obj).map(x => ({district: x, count: obj[x]})))
+  .then(data => generateChart(data))
 
 function generateTable(dataSet) {
   const tdiv = document.querySelector('#table')
@@ -95,3 +102,22 @@ function searchTable() {
   
   trs.forEach(setTrStyleDisplay)
 }
+
+
+function generateChart(data) {
+  new Chart(
+    document.getElementById('districts'),
+    {
+      type: 'pie',
+      data: {
+        labels: data.map(row => row.district),
+        datasets: [
+          {
+            data: data.map(row => row.count)
+          }
+        ]
+      }
+    }
+  );
+}
+
