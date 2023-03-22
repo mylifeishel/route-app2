@@ -3,7 +3,7 @@ let jsonData
 let district
 
 let searchBox = document.querySelector('#searchString')
-searchBox.input = searchTable 
+searchBox.oninput = searchTable 
 
 fetch("facility-fw.json")
   .then((response) => response.json())
