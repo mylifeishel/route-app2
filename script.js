@@ -2,6 +2,8 @@
 let jsonData
 let district
 
+
+
 fetch("facility-fw.json")
   .then((response) => response.json())
   .then((data) => {
@@ -86,7 +88,10 @@ function generateButton(text, buttonCallback) {
   return button
 }
 
-function searchTable() {
+
+
+const searchButton = document.getElementById("searchButton")
+searchButton.onclick = function() {
   console.log('key')
   const trs = document.querySelectorAll('#table tbody tr')
   console.log(trs)
@@ -102,7 +107,6 @@ function searchTable() {
   
   trs.forEach(setTrStyleDisplay)
 }
-
 
 function generateChart(data) {
   new Chart(
