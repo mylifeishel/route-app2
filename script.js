@@ -2,9 +2,6 @@
 let jsonData
 let district
 
-let searchBox = document.querySelector('#searchString')
-searchBox.oninput = searchTable 
-
 fetch("facility-fw.json")
   .then((response) => response.json())
   .then((data) => {
@@ -123,3 +120,4 @@ function generateChart(data) {
     }
   );
 }
+
